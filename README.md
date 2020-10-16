@@ -1,4 +1,4 @@
-# actix_GraphQl_API
+# Actix_GraphQl_API
 
 # Juniper
 

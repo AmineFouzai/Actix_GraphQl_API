@@ -10,7 +10,7 @@
 
 ```bash
 cd actix_GraphQl_API
-cargo run (or ``cargo watch -x run``)
+cargo run 
 ```
 
 ### web client

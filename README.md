@@ -5,11 +5,11 @@
 [Juniper](https://github.com/graphql-rust/juniper) integration for Actix web.
 
 ## Usage
- - git clone https://github.com/MedAmineFouzai/actix_GraphQl_API
+ - git clone https://github.com/MedAmineFouzai/Actix_GraphQl_API
 ### server
 
 ```bash
-cd actix_GraphQl_API
+cd Actix_GraphQl_API
 cargo run 
 ```
 

@@ -12,5 +12,5 @@ edition = "2018"
     juniper = "0.13.1"
     serde_json = "1.0"
     serde="1.0.117"
-    mongodb = "1.0.0"
-    tokio = "0.2.22"
+    isahc = "0.9"
+

@@ -2,6 +2,8 @@
 
 # Juniper
 
+Wrapping a REST API in GraphQL ,Ignite The https://github.com/MedAmineFouzai/Actix_REST_API Project Make Shure That The DataBase Is Correctly Created
+It Will Bind The Server Localy And Create A Graphql Instance From the REST Endpoint (http://localhost:8080/competition/{id}/standings) 
 [Juniper](https://github.com/graphql-rust/juniper) integration for Actix web.
 
 ## Usage
@@ -20,23 +22,23 @@ cargo run
 _Query example:_
 ```graphql
 query {
-  competition {
-    competitionName
-    teams {
-      teamName
-      matchs {
-        away
-        homeGoals
-        awayGoals
-        scoreHome
-        scoreAway
+  classification(id: "5f8b4839d42642b5f38d78db") {
+    competition {
+      id
+      name
+    }
+    standings {
+      position
+      team {
+        teamName
+        wins
+        draws
+        losts
+        goalScored
+        goalAcuired
+        points
       }
     }
-  }
-  classification {
-    teamName
-    teamGoals
-    competionsScore
   }
 }
 ```
@@ -44,139 +46,62 @@ _Result:_
 ```json
 {
   "data": {
-    "competition": [
-      {
-        "competitionName": "uefa champions league",
-        "teams": [
-          {
-            "teamName": "FC Barcelona",
-            "matchs": [
-              {
-                "away": "Paris Saint‑Germain F.C.",
-                "homeGoals": 2,
-                "awayGoals": 0,
-                "scoreHome": 3,
-                "scoreAway": 0
-              },
-              {
-                "away": "Manchester City F.C.",
-                "homeGoals": 0,
-                "awayGoals": 2,
-                "scoreHome": 0,
-                "scoreAway": 3
-              },
-              {
-                "away": "Borussia Dortmund",
-                "homeGoals": 3,
-                "awayGoals": 2,
-                "scoreHome": 3,
-                "scoreAway": 0
-              }
-            ]
-          },
-          {
-            "teamName": "Paris Saint‑Germain F.C.",
-            "matchs": [
-              {
-                "away": "FC Barcelona",
-                "homeGoals": 0,
-                "awayGoals": 2,
-                "scoreHome": 0,
-                "scoreAway": 3
-              },
-              {
-                "away": "Manchester City F.C.",
-                "homeGoals": 0,
-                "awayGoals": 4,
-                "scoreHome": 0,
-                "scoreAway": 3
-              },
-              {
-                "away": "Borussia Dortmund",
-                "homeGoals": 1,
-                "awayGoals": 2,
-                "scoreHome": 0,
-                "scoreAway": 3
-              }
-            ]
-          },
-          {
-            "teamName": "Manchester City F.C.",
-            "matchs": [
-              {
-                "away": "FC Barcelona",
-                "homeGoals": 2,
-                "awayGoals": 0,
-                "scoreHome": 3,
-                "scoreAway": 0
-              },
-              {
-                "away": "Paris Saint‑Germain F.C.",
-                "homeGoals": 4,
-                "awayGoals": 0,
-                "scoreHome": 3,
-                "scoreAway": 0
-              },
-              {
-                "away": "Borussia Dortmund",
-                "homeGoals": 2,
-                "awayGoals": 2,
-                "scoreHome": 1,
-                "scoreAway": 1
-              }
-            ]
-          },
-          {
-            "teamName": "Borussia Dortmund",
-            "matchs": [
-              {
-                "away": "FC Barcelona",
-                "homeGoals": 2,
-                "awayGoals": 3,
-                "scoreHome": 0,
-                "scoreAway": 3
-              },
-              {
-                "away": "Paris Saint‑Germain F.C.",
-                "homeGoals": 2,
-                "awayGoals": 1,
-                "scoreHome": 3,
-                "scoreAway": 0
-              },
-              {
-                "away": "Manchester City F.C.",
-                "homeGoals": 2,
-                "awayGoals": 2,
-                "scoreHome": 1,
-                "scoreAway": 1
-              }
-            ]
+    "classification": {
+      "competition": {
+        "id": "5f8b4839d42642b5f38d78db",
+        "name": "UEFA Champions League"
+      },
+      "standings": [
+        {
+          "position": 1,
+          "team": {
+            "teamName": "Manchester United",
+            "wins": 4,
+            "draws": 1,
+            "losts": 1,
+            "goalScored": 15,
+            "goalAcuired": 11,
+            "points": 13
           }
-        ]
-      }
-    ],
-    "classification": [
-      {
-        "teamName": "Manchester City F.C.",
-        "teamGoals": 8,
-        "competionsScore": 7
-      },
-      {
-        "teamName": "FC Barcelona",
-        "teamGoals": 5,
-        "competionsScore": 6
-      },
-      {
-        "teamName": "Borussia Dortmund",
-        "teamGoals": 6,
-        "competionsScore": 4
-      },
-      {
-        "teamName": "Paris Saint‑Germain F.C.",
-        "teamGoals": 1,
-        "competionsScore": 0
-      }
-    ]
+        },
+        {
+          "position": 2,
+          "team": {
+            "teamName": "Real Madrid",
+            "wins": 2,
+            "draws": 2,
+            "losts": 2,
+            "goalScored": 10,
+            "goalAcuired": 8,
+            "points": 8
+          }
+        },
+        {
+          "position": 3,
+          "team": {
+            "teamName": "Bayern Munich",
+            "wins": 2,
+            "draws": 1,
+            "losts": 3,
+            "goalScored": 9,
+            "goalAcuired": 8,
+            "points": 7
+          }
+        },
+        {
+          "position": 4,
+          "team": {
+            "teamName": "FC Barcelone",
+            "wins": 1,
+            "draws": 2,
+            "losts": 3,
+            "goalScored": 5,
+            "goalAcuired": 12,
+            "points": 5
+          }
+        }
+      ]
+    }
   }
 }
 ```

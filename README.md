@@ -17,7 +17,7 @@ cargo run
 
 ### web client
 
-[http://127.0.0.1:8080/graphiql](http://127.0.0.1:8080/graphiql)
+[http://127.0.0.1:8000/graphiql](http://127.0.0.1:8000/graphiql)
 
 _Query example:_
 ```graphql
